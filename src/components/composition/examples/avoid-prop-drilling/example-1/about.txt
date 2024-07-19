@@ -1,0 +1,49 @@
+Contexto Geral
+
+Data Flow
+
+O React implementa um padrão unidirecional para fluxo de dados para componentes de construção.
+
+Ou seja, um componente filho não pode passar dados para o componente pai;
+por conseguinte, os dados fluem apenas de uma forma, “DE o pai PARA a criança.”
+
+# Objetivo
+  Preciso que o Componente Profile tenha acesso ao loggedIn e handleSetLoggedIn# 
+  
+#Problema:
+    Profile está dentro de Header e não pode acessar diretamente os dados em Home
+
+
+No Arquivo without-composition, o que podemos ver é: 
+
+1. Componente Home contem o os dados que serão utilizados em Profile
+  
+2. O componente Header não faz uso das props, 
+mas os passa para o componente Profile que faz uso deles. 
+
+3. Niveis: Home -> Header -> Profile
+
+Esta situação é conhecida como [Props Drilling] e deve ser evitada!
+
+
+Props Drilling
+  Passar propriedades através de uma cadeia de componentes intermediários que não utilizam essas propriedades.
+
+  # Problemas:
+    Confusão: O código se torna difícil de seguir, pois é necessário rastrear as props por vários níveis.
+
+    Depuração Difícil: Encontrar e corrigir bugs se torna mais complicado.
+
+Possiveis Soluções
+
+  1. API de Contexto ou Redux
+  2. Composição de Componentes
+
+  Qual melhor?
+    A equipe do React diz:
+    
+    "Se você só quer evitar passar alguns adereços através de 
+    muitos níveis, a composição de componentes é muitas vezes 
+    uma solução mais simples do que o contexto."
+
+    link: https://legacy.reactjs.org/docs/context.html#before-you-use-context
