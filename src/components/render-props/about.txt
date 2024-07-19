@@ -1,0 +1,37 @@
+Render Props
+
+ o padrão envolve passar uma função como um suporte para um componente, 
+ concedendo-lhe a capacidade de renderizar conteúdo ou comportamento 
+ dentro do componente receptor.
+
+Conceito Principal:
+  passar uma função como uma props.
+
+Cenário:
+  1. Um componente pai deseja compartilhar seu estado interno com um componente 
+  filho.
+  2. Em vez de passar o estado diretamente, o pai passa uma função que 
+  encapsula a lógica de renderização desejada.
+  3. O componente filho invoca essa função, obtendo o estado e renderizando de 
+  acordo.
+
+Caso de uso: Galeria de Imagens ou Tooltip
+* Imagens
+ 1. Um componente de galeria de imagens que busca imagens de uma API.
+ 2. O componente pai busca as imagens e passa uma função de renderização 
+ para o componente da galeria filho.
+ 3. O componente filho se concentra apenas na renderização, 
+ enquanto o pai lida com a lógica de obtenção de dados.
+
+* Tooltip -> example-1
+  1. O componente pai renderiza um botão com um Tooltip
+  2. O componente Tooltip manipula a renderização do conteúdo.
+
+
+* Diferença entre Composition Components e Render Props
+Composição de componentes: 
+  * é ideal para a _montagem de estruturas_ de UI complexas
+
+Render Props:
+  * Se destacam no _compartilhamento de comportamento_ 
+  * E na _lógica de renderização_ entre os componentes.

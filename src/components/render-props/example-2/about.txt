@@ -1,0 +1,73 @@
+Objetivo
+Criar um formulário que se divide em várias etapas, 
+onde cada etapa pode ser renderizada dinamicamente. 
+
+1. Utilizaremos render props para controlar como cada etapa é renderizada, 
+2. Composição de componentes para estruturar o formulário. 
+3. Hooks personalizados para gerenciar os dados do formulário 
+e a navegação entre as etapas.
+
+* RenderPropsWrapper
+  * Props recebida
+    É uma função que será chamada para renderizar o conteúdo 
+    dentro do contêiner do formulário.
+
+* FormStep
+  * Props recebida
+    É utilizada para renderiza o título da etapa e o conteúdo da etapa.
+
+* useMultiStepForm
+  * hook criado para gerenciar o estado do formulário multi-etapas
+  incluindo qual é a etapa atual e funções para navegar entre as etapas
+
+
+* MultiStepForm
+  1. Utilizamos o hook useMultiStepForm para 
+  obter a etapa atual e as funções de navegação.
+  2. A função renderStep determina qual etapa renderizar com base na etapa atual.
+  3. Utilizamos RenderPropsWrapper para renderizar a etapa atual.
+
+
+
+
+* Outras maneiras de fazer a função renderProps
+
+// const multiStepMapStrategy: MultiStepMapStrategyType = {
+//   1: <StepOne nextStep={nextStep} />,
+//   2: <StepTwo {...{ nextStep, prevStep }} />,
+//   3: <StepThree {...{ prevStep }} />
+// }
+
+// const renderStep = () => {
+//   return multiStepMapStrategy[currentStep] || <p>Unknown Step</p>
+// }
+
+/ const renderStepSwitch = () => {
+//   switch (currentStep) {
+//     case 1:
+//       return (
+//         <FormStep stepNumber={1}>
+//           <p>Content of Step 1</p>
+//           <button onClick={nextStep}>Next</button>
+//         </FormStep>
+//       )
+//     case 2:
+//       return (
+//         <FormStep stepNumber={2}>
+//           <p>Content of Step 2</p>
+//           <button onClick={prevStep}>Back</button>
+//           <button onClick={nextStep}>Next</button>
+//         </FormStep>
+//       )
+//     case 3:
+//       return (
+//         <FormStep stepNumber={3}>
+//           <p>Content of Step 3</p>
+//           <button onClick={prevStep}>Back</button>
+//           <button onClick={() => alert('Form Submitted')}>Submit</button>
+//         </FormStep>
+//       )
+//     default:
+//       return <p>Unknown Step</p>
+//   }
+// }
