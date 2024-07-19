@@ -1,0 +1,44 @@
+Objetivo
+Demonstrar como evitar muitos rerenderes desnecessários em um aplicativo React, 
+utilizando a abordagem de isolar o estado e a lógica de atualização em um componente 
+de layout (PostLayout), enquanto o conteúdo permanece como uma prop estável.
+ Esta prática reduz significativamente as rerenderizações desnecessárias, 
+ melhorando a performance do aplicativo.
+
+Problema
+O problema abordado neste exemplo é a rerenderização desnecessária de componentes 
+em um aplicativo React, que pode levar a problemas de desempenho. 
+
+Quando o estado é gerenciado diretamente dentro do componente 
+que também renderiza o conteúdo, qualquer alteração no estado 
+fará com que todo o componente seja rerenderizado. 
+Isso é especialmente problemático quando o conteúdo é grande ou complexo.
+
+Solução
+A solução apresentada é usar um componente de layout (PostLayout) 
+para gerenciar o estado e a lógica de atualização, 
+enquanto o conteúdo do post é passado como filho.
+ Dessa forma, apenas o componente de layout é rerenderizado 
+ quando o estado muda, evitando rerenderizações desnecessárias 
+ do conteúdo do post.
+
+
+ Without-Composition
+  Temos componente Post
+    * Component que exibe o progresso de rolagem.
+    * Ele atualiza a base de estado no scroll evento
+    * Se utilizarmos esse componente asim, ele irá atualizar o estado a cada srroll que o usuário fizer.
+    * O que é decenecessário, pois apenas estamos utilizando a variavel em h2:
+     <h2 className='progress'>Progress: {progress}%</h2>
+
+With-Composition
+  Temos o mesmo componente Post
+  * Porém, envolvendo o conteúdo do post em um componente de layout que gerencia o estado do scroll e atualiza o progresso
+  * Faz com que evitemos o problema de rerenderização.
+  * Pois apenas PostLayout está sofrendo rerenderização, e não o conteúdo do post.
+
+  * Mas o componente sempre atualiza quando a prop num muda?
+    - Motivo de não sofrer rerenderização:
+    React rerenderiza props somente se eles mudarem.
+    PostLayout children não sofre re-render 
+    porque é uma props que não sofreu mudança.
