@@ -1,5 +1,7 @@
 import CollapsableSection from '../collapsable/CollapsableSection'
+import { menuDevelopment, menuPlanning } from './constants'
 import { DraggableSidebar } from './DraggableSidebar'
+import { MenuItemProps, MenuItemTypes } from './types'
 
 export const Sidebar = () => {
   return (
@@ -14,12 +16,34 @@ export const Sidebar = () => {
 
 const Header = () => <div className='sidebar-header'>ELS project</div>
 
+const MenuItem = ({ title, path }: MenuItemTypes) => {
+  const navigationItem = () => {
+    console.log(path)
+  }
+
+  return (
+    <li>
+      <button onClick={navigationItem}>{title}</button>
+    </li>
+  )
+}
+
+const MenuSectionList = ({ menu }: MenuItemProps) => {
+  return (
+    <ul>
+      {menu.map(({ path, title }) => (
+        <MenuItem key={path} {...{ path, title }} />
+      ))}
+    </ul>
+  )
+}
+
 const PlanningSection = () => {
   return (
     <CollapsableSection title='Planning'>
       <button className='board-picker'>ELS board</button>
 
-      <ul className='section-menu'>... all the menu items here</ul>
+      <MenuSectionList menu={menuPlanning} />
     </CollapsableSection>
   )
 }
@@ -27,7 +51,8 @@ const PlanningSection = () => {
 const DevelopmentSection = () => {
   return (
     <CollapsableSection title='development'>
-      sidebar development section
+      <button className='board-picker'>Dev board</button>
+      <MenuSectionList menu={menuDevelopment} />
     </CollapsableSection>
   )
 }
