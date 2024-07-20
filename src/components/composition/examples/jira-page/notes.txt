@@ -1,0 +1,5 @@
+1. barra superior com logótipo, alguns menus, botão “create” e uma barra de pesquisa
+
+2. barra lateral à esquerda, com o nome do projeto, secções dobráveis “planning” e “development” com itens no interior (também divididos em grupos), com uma secção sem nome com itens de menu por baixo
+
+3. uma grande secção “page content”, onde são mostradas todas as informações sobre o problema atual

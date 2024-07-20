@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import './App.css'
-import List, { SportListItemButton } from './shared/ListSports'
-import { allSports } from './shared/sports'
-import { SportData } from './shared/types'
+import List, { SportListItemButton } from '../../../shared/ListSports'
+import { allSports } from '../../../shared/sports'
+import { SportData } from '../../../shared/types'
 
-function App() {
+function ContainerSport() {
   const [sportList] = useState<Array<SportData>>(() => Object.values(allSports))
 
   const [selectedSport, setSelectedSport] = useState<SportData | null>(null)
@@ -27,4 +26,4 @@ function App() {
   )
 }
 
-export default App
+export default ContainerSport
