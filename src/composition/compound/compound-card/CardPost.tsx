@@ -1,15 +1,26 @@
 import { PropsWithChildren } from 'react'
 
-export default function CardPost({ children, ...props }: PropsWithChildren) {
+export interface CardPostProps extends PropsWithChildren {
+  themeHOC: string
+}
+
+export default function CardPost({
+  children,
+  themeHOC,
+  ...props
+}: CardPostProps) {
+  const theme =
+    themeHOC === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'
+
   return (
-    <div className='container' {...props}>
+    <div className={`container ${theme}`} {...props}>
       {children}
     </div>
   )
 }
 
 CardPost.Content = function CardPostContent({ children }: PropsWithChildren) {
-  return <>{children}</>
+  return <div className='content'>{children}</div>
 }
 
 CardPost.Action = function CardPostAction({ children }: PropsWithChildren) {
