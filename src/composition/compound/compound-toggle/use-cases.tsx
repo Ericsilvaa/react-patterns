@@ -1,6 +1,8 @@
 import { Modal } from '../../../shared/Modal'
-import { ToggleButton, ToggleOff, ToggleOn } from './Toggle'
-import { ToggleProvider } from './ToggleContext'
+import { ToggleButton } from './components/ToggleButton'
+import { ToggleOff } from './components/ToggleOff'
+import { ToggleOn } from './components/ToggleOn'
+import { ToggleProvider } from './context/ToggleContext'
 
 const ContainerToggle = () => {
   return (

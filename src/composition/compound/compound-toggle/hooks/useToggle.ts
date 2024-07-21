@@ -1,5 +1,5 @@
 import React from 'react'
-import { ToggleContext } from './ToggleContext'
+import { ToggleContext } from '../context/ToggleContext'
 
 // # useToggle will be used to access the state and the toggle function
 export const useToggle = () => {

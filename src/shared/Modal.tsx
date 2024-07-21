@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react'
-import { useToggle } from '../components/compound/compound-toggle/useToggle'
+import { useToggle } from '../composition/compound/compound-toggle/hooks/useToggle'
 
 interface ModalProps extends PropsWithChildren {}
 
